@@ -23,6 +23,14 @@ Coding Standards
 - Type hints for all public functions
 - 100% test coverage for new features
 
+Security Practices
+------------------
+- Scan dependencies for vulnerabilities before upgrading
+- Never include secrets in code/docker images
+- Follow container security guidelines from installation docs
+- Report vulnerabilities via SECURITY.md process
+- Review Dockerfile changes for security implications
+
 Documentation
 -------------
 - Update relevant documentation when making API changes

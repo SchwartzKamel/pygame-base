@@ -45,3 +45,13 @@ build
 dist
 )/
 '''
+
+[tool.flake8]
+max-line-length = 88
+extend-ignore = "E203, W503"
+max-complexity = 10
+exclude = ".git,__pycache__,docs,build,dist,.venv"
+include = "app/*,tests/*"
+
+[tool.poetry.group.docs.dependencies]
+sphinx-rtd-theme = "^2.0.0"

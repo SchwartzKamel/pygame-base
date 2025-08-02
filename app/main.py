@@ -1,6 +1,5 @@
 import pygame
 import sys
-import random
 import numpy as np
 from dataclasses import dataclass
 
@@ -21,11 +20,11 @@ clock = pygame.time.Clock()
 
 class Player(pygame.sprite.Sprite):
     """Represents the player character with gravity manipulation capabilities."""
-    
+
     def __init__(self) -> None:
         super().__init__()
         self.spritesheet = pygame.image.load(
-            "assets/sprites/player.png"
+            "app/assets/sprites/player.png"
         ).convert_alpha()
         self.frames = [
             self.spritesheet.subsurface(pygame.Rect(i * 40, 0, 40, 40))
@@ -40,7 +39,7 @@ class Player(pygame.sprite.Sprite):
 
     def update(self, platforms: pygame.sprite.Group) -> None:
         """Update player state including animation and physics.
-        
+
         Args:
             platforms: Group of platforms for collision detection
         """
@@ -51,7 +50,7 @@ class Player(pygame.sprite.Sprite):
         self.image = self.frames[int(self.frame_index)]
 
         # Physics
-        self.vy += G * self.g_dir
+        self.vy += G * self.g_dir  # type: ignore
         self.rect.y += int(self.vy)
 
         # gravity flip
@@ -77,7 +76,7 @@ class Player(pygame.sprite.Sprite):
 
 class SoundGenerator:
     """Handles generation and management of game sound effects using numpy-based waveform synthesis."""
-    
+
     def __init__(self) -> None:
         """Initialize sound generator with empty sound dictionary."""
         self.sounds = {}
@@ -88,10 +87,10 @@ class SoundGenerator:
         freq = 440
         t = np.linspace(0, duration, int(SAMPLE_RATE * duration), False)
         wave = 0.5 * np.sign(np.sin(2 * np.pi * freq * t))
-        stereo_wave = np.repeat(  # Convert to stereo
-            wave[:, None],  # noqa: E501 - Technical numpy operation
-            2,
-            axis=1
+        stereo_wave = np.repeat(
+            wave[:, None],  # Convert 1D array to 2D column vector
+            2,  # Duplicate for stereo channels
+            axis=1,
         )
         sound = pygame.sndarray.make_sound((stereo_wave * 32767).astype(np.int16))
         self.sounds["jump"] = sound
@@ -117,6 +116,14 @@ class Platform(pygame.sprite.Sprite):
 
 @dataclass
 class ParallaxLayer:
+    """Dataclass representing a single parallax background layer.
+
+    Attributes:
+        surf: Surface containing the layer's visual
+        offset: Current horizontal offset for scrolling effect
+        speed: Scroll speed multiplier relative to foreground
+    """
+
     surf: pygame.Surface
     offset: float
     speed: float
@@ -131,8 +138,7 @@ class ParallaxBackground:
             end = tuple(c + 40 for c in start)
             for y in range(H):
                 color = tuple(
-                    int(start[c] + (end[c] - start[c]) * (y / H))
-                    for c in range(3)
+                    int(start[c] + (end[c] - start[c]) * (y / H)) for c in range(3)
                 )
                 pygame.draw.line(surf, color, (0, y), (W, y))
             self.layers.append(ParallaxLayer(surf, 0, 0.2 * (i + 1)))
@@ -150,11 +156,7 @@ class ParallaxBackground:
             screen.blit(layer.surf, (layer.offset + W, 0))
 
 
-def show_game_over(
-    screen: pygame.Surface,
-    font: pygame.font.Font,
-    score: int
-) -> bool:
+def show_game_over(screen: pygame.Surface, font: pygame.font.Font, score: int) -> bool:
     """Display game over screen with restart prompt.
     Args:
         screen: Pygame display surface

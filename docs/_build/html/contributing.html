@@ -15,7 +15,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="app package" href="app.html" />
-    <link rel="prev" title="Installation Guide" href="installation.html" />
+    <link rel="prev" title="Installation" href="installation.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -58,6 +58,16 @@ poetry<span class="w"> </span>run<span class="w"> </span>pytest
 <li><p>Use Google-style docstrings</p></li>
 <li><p>Type hints for all public functions</p></li>
 <li><p>100% test coverage for new features</p></li>
+</ul>
+</section>
+<section id="security-practices">
+<h2>Security Practices<a class="headerlink" href="#security-practices" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Scan dependencies for vulnerabilities before upgrading</p></li>
+<li><p>Never include secrets in code/docker images</p></li>
+<li><p>Follow container security guidelines from installation docs</p></li>
+<li><p>Report vulnerabilities via SECURITY.md process</p></li>
+<li><p>Review Dockerfile changes for security implications</p></li>
 </ul>
 </section>
 <section id="documentation">
@@ -106,10 +116,11 @@ poetry<span class="w"> </span>run<span class="w"> </span>pytest
 <script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
 <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Contribution Guidelines</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#how-to-contribute">How to Contribute</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#coding-standards">Coding Standards</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#security-practices">Security Practices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#documentation">Documentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#issue-reporting">Issue Reporting</a></li>
 </ul>
@@ -125,7 +136,7 @@ poetry<span class="w"> </span>run<span class="w"> </span>pytest
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="installation.html" title="previous chapter">Installation Guide</a></li>
+      <li>Previous: <a href="installation.html" title="previous chapter">Installation</a></li>
       <li>Next: <a href="app.html" title="next chapter">app package</a></li>
   </ul></li>
 </ul>

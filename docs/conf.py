@@ -27,11 +27,16 @@ extensions = [
 
 autodoc_default_options = {
     "members": True,
-    "member-order": "bysource",
+    "member-order": "groupwise",
     "special-members": "__init__",
     "undoc-members": True,
-    "exclude-members": "__weakref__"
+    "exclude-members": "__weakref__",
+    "show-inheritance": True
 }
+
+autodoc_typehints = "description"
+autodoc_class_signature = "separated"
+autodoc_mock_imports = ["pygame", "numpy"]
 
 intersphinx_mapping = {
     "python": ("https://docs.python.org/3", None),
@@ -46,5 +51,5 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = "alabaster"
+html_theme = "sphinx_rtd_theme"
 html_static_path = ["_static"]

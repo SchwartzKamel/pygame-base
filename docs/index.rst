@@ -16,7 +16,6 @@ Welcome to the pygame-base documentation! This project provides a template for 2
    
    app
    modules
-   app.modules.api.util
 
 Indices and Tables
 ==================
