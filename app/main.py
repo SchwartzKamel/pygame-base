@@ -20,6 +20,8 @@ clock = pygame.time.Clock()
 
 
 class Player(pygame.sprite.Sprite):
+    """Represents the player character with gravity manipulation capabilities."""
+    
     def __init__(self) -> None:
         super().__init__()
         self.spritesheet = pygame.image.load(
@@ -37,6 +39,11 @@ class Player(pygame.sprite.Sprite):
         self.g_dir = 1  # 1 = down, -1 = up
 
     def update(self, platforms: pygame.sprite.Group) -> None:
+        """Update player state including animation and physics.
+        
+        Args:
+            platforms: Group of platforms for collision detection
+        """
         # Animate
         self.frame_index += self.animation_speed
         if self.frame_index >= len(self.frames):
@@ -69,9 +76,10 @@ class Player(pygame.sprite.Sprite):
 
 
 class SoundGenerator:
-    """Handles generation and management of game sound effects."""
-
+    """Handles generation and management of game sound effects using numpy-based waveform synthesis."""
+    
     def __init__(self) -> None:
+        """Initialize sound generator with empty sound dictionary."""
         self.sounds = {}
 
     def generate_jump_sound(self):
@@ -104,7 +112,7 @@ class Platform(pygame.sprite.Sprite):
         # Generate random platform gap
         # Generate platform with random dimensions
         self.image = pygame.Surface((PLAT_W, H), pygame.SRCALPHA)
-        random.randint(GAP_MIN, GAP_MAX)  # Used for platform generation
+        # Removed unused random call
 
 
 @dataclass

@@ -21,7 +21,23 @@ extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.coverage",
     "sphinx.ext.napoleon",
+    "sphinx.ext.viewcode",
+    "sphinx.ext.intersphinx",
 ]
+
+autodoc_default_options = {
+    "members": True,
+    "member-order": "bysource",
+    "special-members": "__init__",
+    "undoc-members": True,
+    "exclude-members": "__weakref__"
+}
+
+intersphinx_mapping = {
+    "python": ("https://docs.python.org/3", None),
+    "pygame": ("https://www.pygame.org/docs/", None),
+    "numpy": ("https://numpy.org/doc/stable/", None),
+}
 
 templates_path = ["_templates"]
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]

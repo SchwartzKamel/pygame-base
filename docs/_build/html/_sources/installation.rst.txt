@@ -1,0 +1,44 @@
+Installation Guide
+==================
+
+Prerequisites
+-------------
+- Python 3.12+
+- Poetry package manager
+- Pygame dependencies (SDL libraries)
+
+Installation Steps
+------------------
+
+1. Clone the repository:
+
+   .. code-block:: bash
+
+      git clone https://github.com/your-username/pygame-base.git
+      cd pygame-base
+
+2. Install dependencies with Poetry:
+
+   .. code-block:: bash
+
+      poetry install
+
+3. Run the game:
+
+   .. code-block:: bash
+
+      poetry run python -m app.main
+
+Development Setup
+-----------------
+For development, install additional tools:
+
+.. code-block:: bash
+
+   poetry install --with dev
+
+This installs:
+
+- Black code formatter
+- Flake8 linter
+- Pytest test runner

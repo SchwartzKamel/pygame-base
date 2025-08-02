@@ -1,24 +1,31 @@
-Requirements
-=============
+pygame-base Documentation
+=========================
 
-* poetry has `poetry-auto-export` plugin configured in `poetry.lock`
-* API key from `Randommer.io <https://randommer.io/>`_
-
-docker-python-base documentation
-================================
-
-.. automodule:: app.main
-   :members:
-
-.. automodule:: app.modules.api.util
-   :members:
+Welcome to the pygame-base documentation! This project provides a template for 2D platformer games built with Pygame.
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Getting Started
+   
+   installation
+   contributing
 
-Indices and tables
+.. toctree::
+   :maxdepth: 3
+   :caption: API Reference
+   
+   app
+   modules
+   app.modules.api
+
+Indices and Tables
 ==================
+
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
+External References
+-------------------
+* `Pygame Documentation <https://www.pygame.org/docs/>`_
+* `NumPy Documentation <https://numpy.org/doc/stable/>`_

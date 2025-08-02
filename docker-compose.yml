@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+    deploy:
+      resources:
+        limits:
+          cpus: '2.00'
+          memory: 512M
+    security_opt:
+      - no-new-privileges
+    restart: unless-stopped
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
