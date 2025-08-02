@@ -8,9 +8,9 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y tzdata software-properties-common \
       && add-apt-repository ppa:deadsnakes/ppa \
       && apt-get install --no-install-recommends -y \
-      python3.11 \
-      python3.11-dev \
-      python3.11-venv \
+      python3.12 \
+      python3.12-dev \
+      python3.12-venv \
       python3-pip \
       python3-wheel \
       build-essential \
@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y tzdata software-properties-common \
 
 # Create and activate virtual environment
 # Using final folder name to avoid path issues with packages
-RUN python3.11 -m venv /home/lupin/venv
+RUN python3.12 -m venv /home/lupin/venv
 ENV PATH="/home/lupin/venv/bin:$PATH"
 
 # Install requirements
@@ -31,7 +31,7 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 FROM ubuntu:24.04 AS runner-image
 
 # Run the script
-CMD [ "python3.11", "main.py" ]
+CMD [ "python3.12", "main.py" ]
 
 # Add labels
 LABEL maintainer="SchwartzKamel <lafiamafia@protonmail.com>"
@@ -58,8 +58,8 @@ RUN apt-get update && apt-get upgrade -y \
       && apt-get install -y tzdata software-properties-common \
       && add-apt-repository ppa:deadsnakes/ppa \
       && apt-get install --no-install-recommends -y \
-      python3.11 \
-      python3.11-venv \
+      python3.12 \
+      python3.12-venv \
       groff \
       jq \
       less \

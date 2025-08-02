@@ -1,8 +1,8 @@
 build:
-	docker build -t sierrahackingco/helloworld_python:latest .
+	docker build -t sierrahackingco/pygame-flapper:latest .
 
 test:
-	docker run --name helloworld_python sierrahackingco/helloworld_python:latest
+	docker run --name pygame-flapper sierrahackingco/pygame-flapper:latest
 
 help:
 	@echo "build test"
